@@ -1,8 +1,11 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 
 import AdminLayout from "../../layout/Admin";
 import ClassroomCard from "../../Components/Cards/ClassroomCard";
 import ClassroomTabs from "../../Components/Tabs/ClassroomTabs";
+
+import { Auth } from "aws-amplify";
+import NetworkService from "../../service/NetworkService";
 export default function Classrooms() {
     const classroomsData = [
         {
@@ -33,6 +36,49 @@ export default function Classrooms() {
         },
 
     ]
+    const signIn = async () => {
+        try {
+            const user = await Auth.currentAuthenticatedUser()
+            console.log("user", user)
+            // if (!user) {
+            //     const res = await Auth.signIn("ektakesharwani111@gmail.com", "Test@123")
+            //     console.log(res)
+
+            // }
+            test()
+
+        }
+        catch (error) {
+            const res = await Auth.signIn("ektakesharwani111@gmail.com", "Test@123")
+            console.log(res)
+            test()
+            console.log("Error", error)
+
+        }
+    }
+    const test = async () => {
+        const body = {
+            booking_type: "active"
+        }
+        try {
+            await new NetworkService().makeRequest("get_list_of_all_respondent", body, (data: any, err = null) => {
+
+                if (!err) {
+                    console.log(data)
+                }
+                else {
+                    console.log("Error")
+                }
+            })
+        }
+        catch (e) {
+            console.log(e)
+        }
+    }
+    useEffect(() => {
+        signIn()
+
+    }, [])
     return (
         <>
             <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-100 border-0">

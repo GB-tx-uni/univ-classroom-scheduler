@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-univclassscheduler-dev-204809-authRole",
+      "UnauthRoleArn": "arn:aws:iam::124017527459:role/amplify-univclassscheduler-dev-204809-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::124017527459:role/amplify-univclassscheduler-dev-204809-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-univclassscheduler-dev-204809-deployment",
+      "UnauthRoleName": "amplify-univclassscheduler-dev-204809-unauthRole",
+      "StackName": "amplify-univclassscheduler-dev-204809",
+      "StackId": "arn:aws:cloudformation:us-east-2:124017527459:stack/amplify-univclassscheduler-dev-204809/a7b4a710-9d8c-11ed-be08-06d4a3b05e94",
+      "AmplifyAppId": "d33vr2watymhh2"
+    },
+    "categories": {
+      "auth": {
+        "univclassscheduler66379920": {}
+      }
+    }
+  }
+}

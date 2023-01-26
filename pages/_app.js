@@ -10,6 +10,9 @@ import ReactDOM from "react-dom";
 import App from "next/app";
 import Head from "next/head";
 import Router from "next/router";
+import awsmobile from "../src/aws-exports";
+import Amplify from "@aws-amplify/core";
+import { Hub } from "aws-amplify";
 import "react-big-calendar/lib/css/react-big-calendar.css"
 
 import PageChange from "../Components/PageChange";
@@ -17,6 +20,12 @@ import PageChange from "../Components/PageChange";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 // import "styles/tailwind.css";
 import "styles/index.css"
+Hub.listen("auth", (data) => {
+    if (data.payload.event === "signOut") {
+        store.clearAll();
+        Router.push("/auth/login");
+    }
+});
 
 // Router.events.on("routeChangeStart", (url) => {
 //     console.log(`Loading: ${url}`);
@@ -36,7 +45,9 @@ import "styles/index.css"
 // });
 
 export default class MyApp extends App {
+
     componentDidMount() {
+        Amplify.configure(awsmobile);
         let comment = document.createComment(`
 
 =========================================================
