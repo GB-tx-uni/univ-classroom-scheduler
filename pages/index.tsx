@@ -2,122 +2,1827 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from '@next/font/google'
 import styles from '../styles/Home.module.css'
-
-const inter = Inter({ subsets: ['latin'] })
+import { useState } from 'react'
+import Button from '../Components/Button/SubmitButton'
 
 export default function Home() {
+
+  const dates = [
+    {
+      "date": "1 Jan",
+      "slots": [
+        {
+          "startTime": "10:00",
+          "endTime": "10:30",
+          "available": true
+        }, {
+          "startTime": "10:30",
+          "endTime": "11:00",
+          "available": true
+        },
+        {
+          "startTime": "11:00",
+          "endTime": "11:30",
+          "available": true
+        },
+        {
+          "startTime": "11:30",
+          "endTime": "12:00",
+          "available": true
+        },
+        {
+          "startTime": "12:00",
+          "endTime": "12:30",
+          "available": true
+        },
+        {
+          "startTime": "12:30",
+          "endTime": "13:00",
+          "available": true
+        },
+        {
+          "startTime": "13:00",
+          "endTime": "13:30",
+          "available": true
+        },
+        {
+          "startTime": "13:30",
+          "endTime": "14:00",
+          "available": true
+        },
+        {
+          "startTime": "14:00",
+          "endTime": "14:30",
+          "available": true
+        },
+        {
+          "startTime": "14:30",
+          "endTime": "15:00",
+          "available": true
+        },
+        {
+          "startTime": "15:00",
+          "endTime": "15:30",
+          "available": true
+        },
+        {
+          "startTime": "15:30",
+          "endTime": "16:00",
+          "available": true
+        },
+        {
+          "startTime": "16:00",
+          "endTime": "16:30",
+          "available": true
+        },
+        {
+          "startTime": "16:30",
+          "endTime": "17:00",
+          "available": true
+        },
+        {
+          "startTime": "17:00",
+          "endTime": "17:30",
+          "available": true
+        },
+        {
+          "startTime": "17:30",
+          "endTime": "18:00",
+          "available": true
+        }
+      ]
+    },
+    {
+      "date": "2 Jan",
+      "slots": [
+        {
+          "startTime": "10:00",
+          "endTime": "10:30",
+          "available": true
+        }, {
+          "startTime": "10:30",
+          "endTime": "11:00",
+          "available": true
+        },
+        {
+          "startTime": "11:00",
+          "endTime": "11:30",
+          "available": true
+        },
+        {
+          "startTime": "11:30",
+          "endTime": "12:00",
+          "available": true
+        },
+        {
+          "startTime": "12:00",
+          "endTime": "12:30",
+          "available": true
+        },
+        {
+          "startTime": "12:30",
+          "endTime": "13:00",
+          "available": true
+        },
+        {
+          "startTime": "13:00",
+          "endTime": "13:30",
+          "available": true
+        },
+        {
+          "startTime": "13:30",
+          "endTime": "14:00",
+          "available": true
+        },
+        {
+          "startTime": "14:00",
+          "endTime": "14:30",
+          "available": true
+        },
+        {
+          "startTime": "14:30",
+          "endTime": "15:00",
+          "available": true
+        },
+        {
+          "startTime": "15:00",
+          "endTime": "15:30",
+          "available": true
+        },
+        {
+          "startTime": "15:30",
+          "endTime": "16:00",
+          "available": true
+        },
+        {
+          "startTime": "16:00",
+          "endTime": "16:30",
+          "available": true
+        },
+        {
+          "startTime": "16:30",
+          "endTime": "17:00",
+          "available": true
+        },
+        {
+          "startTime": "17:00",
+          "endTime": "17:30",
+          "available": true
+        },
+        {
+          "startTime": "17:30",
+          "endTime": "18:00",
+          "available": true
+        }
+      ]
+    },
+    {
+      "date": "3 Jan",
+      "slots": [
+        {
+          "startTime": "10:00",
+          "endTime": "10:30",
+          "available": true
+        }, {
+          "startTime": "10:30",
+          "endTime": "11:00",
+          "available": true
+        },
+        {
+          "startTime": "11:00",
+          "endTime": "11:30",
+          "available": true
+        },
+        {
+          "startTime": "11:30",
+          "endTime": "12:00",
+          "available": true
+        },
+        {
+          "startTime": "12:00",
+          "endTime": "12:30",
+          "available": true
+        },
+        {
+          "startTime": "12:30",
+          "endTime": "13:00",
+          "available": true
+        },
+        {
+          "startTime": "13:00",
+          "endTime": "13:30",
+          "available": true
+        },
+        {
+          "startTime": "13:30",
+          "endTime": "14:00",
+          "available": true
+        },
+        {
+          "startTime": "14:00",
+          "endTime": "14:30",
+          "available": true
+        },
+        {
+          "startTime": "14:30",
+          "endTime": "15:00",
+          "available": true
+        },
+        {
+          "startTime": "15:00",
+          "endTime": "15:30",
+          "available": true
+        },
+        {
+          "startTime": "15:30",
+          "endTime": "16:00",
+          "available": true
+        },
+        {
+          "startTime": "16:00",
+          "endTime": "16:30",
+          "available": true
+        },
+        {
+          "startTime": "16:30",
+          "endTime": "17:00",
+          "available": true
+        },
+        {
+          "startTime": "17:00",
+          "endTime": "17:30",
+          "available": true
+        },
+        {
+          "startTime": "17:30",
+          "endTime": "18:00",
+          "available": true
+        }
+      ]
+    },
+    {
+      "date": "4 Jan",
+      "slots": [
+        {
+          "startTime": "10:00",
+          "endTime": "10:30",
+          "available": true
+        }, {
+          "startTime": "10:30",
+          "endTime": "11:00",
+          "available": true
+        },
+        {
+          "startTime": "11:00",
+          "endTime": "11:30",
+          "available": true
+        },
+        {
+          "startTime": "11:30",
+          "endTime": "12:00",
+          "available": true
+        },
+        {
+          "startTime": "12:00",
+          "endTime": "12:30",
+          "available": true
+        },
+        {
+          "startTime": "12:30",
+          "endTime": "13:00",
+          "available": true
+        },
+        {
+          "startTime": "13:00",
+          "endTime": "13:30",
+          "available": true
+        },
+        {
+          "startTime": "13:30",
+          "endTime": "14:00",
+          "available": true
+        },
+        {
+          "startTime": "14:00",
+          "endTime": "14:30",
+          "available": true
+        },
+        {
+          "startTime": "14:30",
+          "endTime": "15:00",
+          "available": true
+        },
+        {
+          "startTime": "15:00",
+          "endTime": "15:30",
+          "available": true
+        },
+        {
+          "startTime": "15:30",
+          "endTime": "16:00",
+          "available": true
+        },
+        {
+          "startTime": "16:00",
+          "endTime": "16:30",
+          "available": true
+        },
+        {
+          "startTime": "16:30",
+          "endTime": "17:00",
+          "available": true
+        },
+        {
+          "startTime": "17:00",
+          "endTime": "17:30",
+          "available": true
+        },
+        {
+          "startTime": "17:30",
+          "endTime": "18:00",
+          "available": true
+        }
+      ]
+    },
+    {
+      "date": "5 Jan",
+      "slots": [
+        {
+          "startTime": "10:00",
+          "endTime": "10:30",
+          "available": true
+        }, {
+          "startTime": "10:30",
+          "endTime": "11:00",
+          "available": true
+        },
+        {
+          "startTime": "11:00",
+          "endTime": "11:30",
+          "available": true
+        },
+        {
+          "startTime": "11:30",
+          "endTime": "12:00",
+          "available": true
+        },
+        {
+          "startTime": "12:00",
+          "endTime": "12:30",
+          "available": true
+        },
+        {
+          "startTime": "12:30",
+          "endTime": "13:00",
+          "available": true
+        },
+        {
+          "startTime": "13:00",
+          "endTime": "13:30",
+          "available": true
+        },
+        {
+          "startTime": "13:30",
+          "endTime": "14:00",
+          "available": true
+        },
+        {
+          "startTime": "14:00",
+          "endTime": "14:30",
+          "available": true
+        },
+        {
+          "startTime": "14:30",
+          "endTime": "15:00",
+          "available": true
+        },
+        {
+          "startTime": "15:00",
+          "endTime": "15:30",
+          "available": true
+        },
+        {
+          "startTime": "15:30",
+          "endTime": "16:00",
+          "available": true
+        },
+        {
+          "startTime": "16:00",
+          "endTime": "16:30",
+          "available": true
+        },
+        {
+          "startTime": "16:30",
+          "endTime": "17:00",
+          "available": true
+        },
+        {
+          "startTime": "17:00",
+          "endTime": "17:30",
+          "available": true
+        },
+        {
+          "startTime": "17:30",
+          "endTime": "18:00",
+          "available": true
+        }
+      ]
+    },
+    {
+      "date": "6 Jan",
+      "slots": [
+        {
+          "startTime": "10:00",
+          "endTime": "10:30",
+          "available": true
+        }, {
+          "startTime": "10:30",
+          "endTime": "11:00",
+          "available": true
+        },
+        {
+          "startTime": "11:00",
+          "endTime": "11:30",
+          "available": true
+        },
+        {
+          "startTime": "11:30",
+          "endTime": "12:00",
+          "available": true
+        },
+        {
+          "startTime": "12:00",
+          "endTime": "12:30",
+          "available": true
+        },
+        {
+          "startTime": "12:30",
+          "endTime": "13:00",
+          "available": true
+        },
+        {
+          "startTime": "13:00",
+          "endTime": "13:30",
+          "available": true
+        },
+        {
+          "startTime": "13:30",
+          "endTime": "14:00",
+          "available": true
+        },
+        {
+          "startTime": "14:00",
+          "endTime": "14:30",
+          "available": true
+        },
+        {
+          "startTime": "14:30",
+          "endTime": "15:00",
+          "available": true
+        },
+        {
+          "startTime": "15:00",
+          "endTime": "15:30",
+          "available": true
+        },
+        {
+          "startTime": "15:30",
+          "endTime": "16:00",
+          "available": true
+        },
+        {
+          "startTime": "16:00",
+          "endTime": "16:30",
+          "available": true
+        },
+        {
+          "startTime": "16:30",
+          "endTime": "17:00",
+          "available": true
+        },
+        {
+          "startTime": "17:00",
+          "endTime": "17:30",
+          "available": true
+        },
+        {
+          "startTime": "17:30",
+          "endTime": "18:00",
+          "available": true
+        }
+      ]
+    },
+    {
+      "date": "7 Jan",
+      "slots": [
+        {
+          "startTime": "10:00",
+          "endTime": "10:30",
+          "available": true
+        }, {
+          "startTime": "10:30",
+          "endTime": "11:00",
+          "available": true
+        },
+        {
+          "startTime": "11:00",
+          "endTime": "11:30",
+          "available": true
+        },
+        {
+          "startTime": "11:30",
+          "endTime": "12:00",
+          "available": true
+        },
+        {
+          "startTime": "12:00",
+          "endTime": "12:30",
+          "available": true
+        },
+        {
+          "startTime": "12:30",
+          "endTime": "13:00",
+          "available": true
+        },
+        {
+          "startTime": "13:00",
+          "endTime": "13:30",
+          "available": true
+        },
+        {
+          "startTime": "13:30",
+          "endTime": "14:00",
+          "available": true
+        },
+        {
+          "startTime": "14:00",
+          "endTime": "14:30",
+          "available": true
+        },
+        {
+          "startTime": "14:30",
+          "endTime": "15:00",
+          "available": true
+        },
+        {
+          "startTime": "15:00",
+          "endTime": "15:30",
+          "available": true
+        },
+        {
+          "startTime": "15:30",
+          "endTime": "16:00",
+          "available": true
+        },
+        {
+          "startTime": "16:00",
+          "endTime": "16:30",
+          "available": true
+        },
+        {
+          "startTime": "16:30",
+          "endTime": "17:00",
+          "available": true
+        },
+        {
+          "startTime": "17:00",
+          "endTime": "17:30",
+          "available": true
+        },
+        {
+          "startTime": "17:30",
+          "endTime": "18:00",
+          "available": true
+        }
+      ]
+    },
+    {
+      "date": "8 Jan",
+      "slots": [
+        {
+          "startTime": "10:00",
+          "endTime": "10:30",
+          "available": true
+        }, {
+          "startTime": "10:30",
+          "endTime": "11:00",
+          "available": true
+        },
+        {
+          "startTime": "11:00",
+          "endTime": "11:30",
+          "available": true
+        },
+        {
+          "startTime": "11:30",
+          "endTime": "12:00",
+          "available": true
+        },
+        {
+          "startTime": "12:00",
+          "endTime": "12:30",
+          "available": true
+        },
+        {
+          "startTime": "12:30",
+          "endTime": "13:00",
+          "available": true
+        },
+        {
+          "startTime": "13:00",
+          "endTime": "13:30",
+          "available": true
+        },
+        {
+          "startTime": "13:30",
+          "endTime": "14:00",
+          "available": true
+        },
+        {
+          "startTime": "14:00",
+          "endTime": "14:30",
+          "available": true
+        },
+        {
+          "startTime": "14:30",
+          "endTime": "15:00",
+          "available": true
+        },
+        {
+          "startTime": "15:00",
+          "endTime": "15:30",
+          "available": true
+        },
+        {
+          "startTime": "15:30",
+          "endTime": "16:00",
+          "available": true
+        },
+        {
+          "startTime": "16:00",
+          "endTime": "16:30",
+          "available": true
+        },
+        {
+          "startTime": "16:30",
+          "endTime": "17:00",
+          "available": true
+        },
+        {
+          "startTime": "17:00",
+          "endTime": "17:30",
+          "available": true
+        },
+        {
+          "startTime": "17:30",
+          "endTime": "18:00",
+          "available": true
+        }
+      ]
+    },
+    {
+      "date": "9 Jan",
+      "slots": [
+        {
+          "startTime": "10:00",
+          "endTime": "10:30",
+          "available": true
+        }, {
+          "startTime": "10:30",
+          "endTime": "11:00",
+          "available": true
+        },
+        {
+          "startTime": "11:00",
+          "endTime": "11:30",
+          "available": true
+        },
+        {
+          "startTime": "11:30",
+          "endTime": "12:00",
+          "available": true
+        },
+        {
+          "startTime": "12:00",
+          "endTime": "12:30",
+          "available": true
+        },
+        {
+          "startTime": "12:30",
+          "endTime": "13:00",
+          "available": true
+        },
+        {
+          "startTime": "13:00",
+          "endTime": "13:30",
+          "available": true
+        },
+        {
+          "startTime": "13:30",
+          "endTime": "14:00",
+          "available": true
+        },
+        {
+          "startTime": "14:00",
+          "endTime": "14:30",
+          "available": true
+        },
+        {
+          "startTime": "14:30",
+          "endTime": "15:00",
+          "available": true
+        },
+        {
+          "startTime": "15:00",
+          "endTime": "15:30",
+          "available": true
+        },
+        {
+          "startTime": "15:30",
+          "endTime": "16:00",
+          "available": true
+        },
+        {
+          "startTime": "16:00",
+          "endTime": "16:30",
+          "available": true
+        },
+        {
+          "startTime": "16:30",
+          "endTime": "17:00",
+          "available": true
+        },
+        {
+          "startTime": "17:00",
+          "endTime": "17:30",
+          "available": true
+        },
+        {
+          "startTime": "17:30",
+          "endTime": "18:00",
+          "available": true
+        }
+      ]
+    },
+    {
+      "date": "10 Jan",
+      "slots": [
+        {
+          "startTime": "10:00",
+          "endTime": "10:30",
+          "available": true
+        }, {
+          "startTime": "10:30",
+          "endTime": "11:00",
+          "available": true
+        },
+        {
+          "startTime": "11:00",
+          "endTime": "11:30",
+          "available": true
+        },
+        {
+          "startTime": "11:30",
+          "endTime": "12:00",
+          "available": true
+        },
+        {
+          "startTime": "12:00",
+          "endTime": "12:30",
+          "available": true
+        },
+        {
+          "startTime": "12:30",
+          "endTime": "13:00",
+          "available": true
+        },
+        {
+          "startTime": "13:00",
+          "endTime": "13:30",
+          "available": true
+        },
+        {
+          "startTime": "13:30",
+          "endTime": "14:00",
+          "available": true
+        },
+        {
+          "startTime": "14:00",
+          "endTime": "14:30",
+          "available": true
+        },
+        {
+          "startTime": "14:30",
+          "endTime": "15:00",
+          "available": true
+        },
+        {
+          "startTime": "15:00",
+          "endTime": "15:30",
+          "available": true
+        },
+        {
+          "startTime": "15:30",
+          "endTime": "16:00",
+          "available": true
+        },
+        {
+          "startTime": "16:00",
+          "endTime": "16:30",
+          "available": true
+        },
+        {
+          "startTime": "16:30",
+          "endTime": "17:00",
+          "available": true
+        },
+        {
+          "startTime": "17:00",
+          "endTime": "17:30",
+          "available": true
+        },
+        {
+          "startTime": "17:30",
+          "endTime": "18:00",
+          "available": true
+        }
+      ]
+    },
+    {
+      "date": "11 Jan",
+      "slots": [
+        {
+          "startTime": "10:00",
+          "endTime": "10:30",
+          "available": true
+        }, {
+          "startTime": "10:30",
+          "endTime": "11:00",
+          "available": true
+        },
+        {
+          "startTime": "11:00",
+          "endTime": "11:30",
+          "available": true
+        },
+        {
+          "startTime": "11:30",
+          "endTime": "12:00",
+          "available": true
+        },
+        {
+          "startTime": "12:00",
+          "endTime": "12:30",
+          "available": true
+        },
+        {
+          "startTime": "12:30",
+          "endTime": "13:00",
+          "available": true
+        },
+        {
+          "startTime": "13:00",
+          "endTime": "13:30",
+          "available": true
+        },
+        {
+          "startTime": "13:30",
+          "endTime": "14:00",
+          "available": true
+        },
+        {
+          "startTime": "14:00",
+          "endTime": "14:30",
+          "available": true
+        },
+        {
+          "startTime": "14:30",
+          "endTime": "15:00",
+          "available": true
+        },
+        {
+          "startTime": "15:00",
+          "endTime": "15:30",
+          "available": true
+        },
+        {
+          "startTime": "15:30",
+          "endTime": "16:00",
+          "available": true
+        },
+        {
+          "startTime": "16:00",
+          "endTime": "16:30",
+          "available": true
+        },
+        {
+          "startTime": "16:30",
+          "endTime": "17:00",
+          "available": true
+        },
+        {
+          "startTime": "17:00",
+          "endTime": "17:30",
+          "available": true
+        },
+        {
+          "startTime": "17:30",
+          "endTime": "18:00",
+          "available": true
+        }
+      ]
+    },
+    {
+      "date": "12 Jan",
+      "slots": [
+        {
+          "startTime": "10:00",
+          "endTime": "10:30",
+          "available": true
+        }, {
+          "startTime": "10:30",
+          "endTime": "11:00",
+          "available": true
+        },
+        {
+          "startTime": "11:00",
+          "endTime": "11:30",
+          "available": true
+        },
+        {
+          "startTime": "11:30",
+          "endTime": "12:00",
+          "available": true
+        },
+        {
+          "startTime": "12:00",
+          "endTime": "12:30",
+          "available": true
+        },
+        {
+          "startTime": "12:30",
+          "endTime": "13:00",
+          "available": true
+        },
+        {
+          "startTime": "13:00",
+          "endTime": "13:30",
+          "available": true
+        },
+        {
+          "startTime": "13:30",
+          "endTime": "14:00",
+          "available": true
+        },
+        {
+          "startTime": "14:00",
+          "endTime": "14:30",
+          "available": true
+        },
+        {
+          "startTime": "14:30",
+          "endTime": "15:00",
+          "available": true
+        },
+        {
+          "startTime": "15:00",
+          "endTime": "15:30",
+          "available": true
+        },
+        {
+          "startTime": "15:30",
+          "endTime": "16:00",
+          "available": true
+        },
+        {
+          "startTime": "16:00",
+          "endTime": "16:30",
+          "available": true
+        },
+        {
+          "startTime": "16:30",
+          "endTime": "17:00",
+          "available": true
+        },
+        {
+          "startTime": "17:00",
+          "endTime": "17:30",
+          "available": true
+        },
+        {
+          "startTime": "17:30",
+          "endTime": "18:00",
+          "available": true
+        }
+      ]
+    },
+    {
+      "date": "13 Jan",
+      "slots": [
+        {
+          "startTime": "10:00",
+          "endTime": "10:30",
+          "available": true
+        }, {
+          "startTime": "10:30",
+          "endTime": "11:00",
+          "available": true
+        },
+        {
+          "startTime": "11:00",
+          "endTime": "11:30",
+          "available": true
+        },
+        {
+          "startTime": "11:30",
+          "endTime": "12:00",
+          "available": true
+        },
+        {
+          "startTime": "12:00",
+          "endTime": "12:30",
+          "available": true
+        },
+        {
+          "startTime": "12:30",
+          "endTime": "13:00",
+          "available": true
+        },
+        {
+          "startTime": "13:00",
+          "endTime": "13:30",
+          "available": true
+        },
+        {
+          "startTime": "13:30",
+          "endTime": "14:00",
+          "available": true
+        },
+        {
+          "startTime": "14:00",
+          "endTime": "14:30",
+          "available": true
+        },
+        {
+          "startTime": "14:30",
+          "endTime": "15:00",
+          "available": true
+        },
+        {
+          "startTime": "15:00",
+          "endTime": "15:30",
+          "available": true
+        },
+        {
+          "startTime": "15:30",
+          "endTime": "16:00",
+          "available": true
+        },
+        {
+          "startTime": "16:00",
+          "endTime": "16:30",
+          "available": true
+        },
+        {
+          "startTime": "16:30",
+          "endTime": "17:00",
+          "available": true
+        },
+        {
+          "startTime": "17:00",
+          "endTime": "17:30",
+          "available": true
+        },
+        {
+          "startTime": "17:30",
+          "endTime": "18:00",
+          "available": true
+        }
+      ]
+    },
+    {
+      "date": "14 Jan",
+      "slots": [
+        {
+          "startTime": "10:00",
+          "endTime": "10:30",
+          "available": true
+        }, {
+          "startTime": "10:30",
+          "endTime": "11:00",
+          "available": true
+        },
+        {
+          "startTime": "11:00",
+          "endTime": "11:30",
+          "available": true
+        },
+        {
+          "startTime": "11:30",
+          "endTime": "12:00",
+          "available": true
+        },
+        {
+          "startTime": "12:00",
+          "endTime": "12:30",
+          "available": true
+        },
+        {
+          "startTime": "12:30",
+          "endTime": "13:00",
+          "available": true
+        },
+        {
+          "startTime": "13:00",
+          "endTime": "13:30",
+          "available": true
+        },
+        {
+          "startTime": "13:30",
+          "endTime": "14:00",
+          "available": true
+        },
+        {
+          "startTime": "14:00",
+          "endTime": "14:30",
+          "available": true
+        },
+        {
+          "startTime": "14:30",
+          "endTime": "15:00",
+          "available": true
+        },
+        {
+          "startTime": "15:00",
+          "endTime": "15:30",
+          "available": true
+        },
+        {
+          "startTime": "15:30",
+          "endTime": "16:00",
+          "available": true
+        },
+        {
+          "startTime": "16:00",
+          "endTime": "16:30",
+          "available": true
+        },
+        {
+          "startTime": "16:30",
+          "endTime": "17:00",
+          "available": true
+        },
+        {
+          "startTime": "17:00",
+          "endTime": "17:30",
+          "available": true
+        },
+        {
+          "startTime": "17:30",
+          "endTime": "18:00",
+          "available": true
+        }
+      ]
+    },
+    {
+      "date": "15 Jan",
+      "slots": [
+        {
+          "startTime": "10:00",
+          "endTime": "10:30",
+          "available": true
+        }, {
+          "startTime": "10:30",
+          "endTime": "11:00",
+          "available": true
+        },
+        {
+          "startTime": "11:00",
+          "endTime": "11:30",
+          "available": true
+        },
+        {
+          "startTime": "11:30",
+          "endTime": "12:00",
+          "available": true
+        },
+        {
+          "startTime": "12:00",
+          "endTime": "12:30",
+          "available": true
+        },
+        {
+          "startTime": "12:30",
+          "endTime": "13:00",
+          "available": true
+        },
+        {
+          "startTime": "13:00",
+          "endTime": "13:30",
+          "available": true
+        },
+        {
+          "startTime": "13:30",
+          "endTime": "14:00",
+          "available": true
+        },
+        {
+          "startTime": "14:00",
+          "endTime": "14:30",
+          "available": true
+        },
+        {
+          "startTime": "14:30",
+          "endTime": "15:00",
+          "available": true
+        },
+        {
+          "startTime": "15:00",
+          "endTime": "15:30",
+          "available": true
+        },
+        {
+          "startTime": "15:30",
+          "endTime": "16:00",
+          "available": true
+        },
+        {
+          "startTime": "16:00",
+          "endTime": "16:30",
+          "available": true
+        },
+        {
+          "startTime": "16:30",
+          "endTime": "17:00",
+          "available": true
+        },
+        {
+          "startTime": "17:00",
+          "endTime": "17:30",
+          "available": true
+        },
+        {
+          "startTime": "17:30",
+          "endTime": "18:00",
+          "available": true
+        }
+      ]
+    },
+    {
+      "date": "16 Jan",
+      "slots": [
+        {
+          "startTime": "10:00",
+          "endTime": "10:30",
+          "available": true
+        }, {
+          "startTime": "10:30",
+          "endTime": "11:00",
+          "available": true
+        },
+        {
+          "startTime": "11:00",
+          "endTime": "11:30",
+          "available": true
+        },
+        {
+          "startTime": "11:30",
+          "endTime": "12:00",
+          "available": true
+        },
+        {
+          "startTime": "12:00",
+          "endTime": "12:30",
+          "available": true
+        },
+        {
+          "startTime": "12:30",
+          "endTime": "13:00",
+          "available": true
+        },
+        {
+          "startTime": "13:00",
+          "endTime": "13:30",
+          "available": true
+        },
+        {
+          "startTime": "13:30",
+          "endTime": "14:00",
+          "available": true
+        },
+        {
+          "startTime": "14:00",
+          "endTime": "14:30",
+          "available": true
+        },
+        {
+          "startTime": "14:30",
+          "endTime": "15:00",
+          "available": true
+        },
+        {
+          "startTime": "15:00",
+          "endTime": "15:30",
+          "available": true
+        },
+        {
+          "startTime": "15:30",
+          "endTime": "16:00",
+          "available": true
+        },
+        {
+          "startTime": "16:00",
+          "endTime": "16:30",
+          "available": true
+        },
+        {
+          "startTime": "16:30",
+          "endTime": "17:00",
+          "available": true
+        },
+        {
+          "startTime": "17:00",
+          "endTime": "17:30",
+          "available": true
+        },
+        {
+          "startTime": "17:30",
+          "endTime": "18:00",
+          "available": true
+        }
+      ]
+    },
+    {
+      "date": "17 Jan",
+      "slots": [
+        {
+          "startTime": "10:00",
+          "endTime": "10:30",
+          "available": true
+        }, {
+          "startTime": "10:30",
+          "endTime": "11:00",
+          "available": true
+        },
+        {
+          "startTime": "11:00",
+          "endTime": "11:30",
+          "available": true
+        },
+        {
+          "startTime": "11:30",
+          "endTime": "12:00",
+          "available": true
+        },
+        {
+          "startTime": "12:00",
+          "endTime": "12:30",
+          "available": true
+        },
+        {
+          "startTime": "12:30",
+          "endTime": "13:00",
+          "available": true
+        },
+        {
+          "startTime": "13:00",
+          "endTime": "13:30",
+          "available": true
+        },
+        {
+          "startTime": "13:30",
+          "endTime": "14:00",
+          "available": true
+        },
+        {
+          "startTime": "14:00",
+          "endTime": "14:30",
+          "available": true
+        },
+        {
+          "startTime": "14:30",
+          "endTime": "15:00",
+          "available": true
+        },
+        {
+          "startTime": "15:00",
+          "endTime": "15:30",
+          "available": true
+        },
+        {
+          "startTime": "15:30",
+          "endTime": "16:00",
+          "available": true
+        },
+        {
+          "startTime": "16:00",
+          "endTime": "16:30",
+          "available": true
+        },
+        {
+          "startTime": "16:30",
+          "endTime": "17:00",
+          "available": true
+        },
+        {
+          "startTime": "17:00",
+          "endTime": "17:30",
+          "available": true
+        },
+        {
+          "startTime": "17:30",
+          "endTime": "18:00",
+          "available": true
+        }
+      ]
+    },
+    {
+      "date": "18 Jan",
+      "slots": [
+        {
+          "startTime": "10:00",
+          "endTime": "10:30",
+          "available": true
+        }, {
+          "startTime": "10:30",
+          "endTime": "11:00",
+          "available": true
+        },
+        {
+          "startTime": "11:00",
+          "endTime": "11:30",
+          "available": true
+        },
+        {
+          "startTime": "11:30",
+          "endTime": "12:00",
+          "available": true
+        },
+        {
+          "startTime": "12:00",
+          "endTime": "12:30",
+          "available": true
+        },
+        {
+          "startTime": "12:30",
+          "endTime": "13:00",
+          "available": true
+        },
+        {
+          "startTime": "13:00",
+          "endTime": "13:30",
+          "available": true
+        },
+        {
+          "startTime": "13:30",
+          "endTime": "14:00",
+          "available": true
+        },
+        {
+          "startTime": "14:00",
+          "endTime": "14:30",
+          "available": true
+        },
+        {
+          "startTime": "14:30",
+          "endTime": "15:00",
+          "available": true
+        },
+        {
+          "startTime": "15:00",
+          "endTime": "15:30",
+          "available": true
+        },
+        {
+          "startTime": "15:30",
+          "endTime": "16:00",
+          "available": true
+        },
+        {
+          "startTime": "16:00",
+          "endTime": "16:30",
+          "available": true
+        },
+        {
+          "startTime": "16:30",
+          "endTime": "17:00",
+          "available": true
+        },
+        {
+          "startTime": "17:00",
+          "endTime": "17:30",
+          "available": true
+        },
+        {
+          "startTime": "17:30",
+          "endTime": "18:00",
+          "available": true
+        }
+      ]
+    },
+    {
+      "date": "19 Jan",
+      "slots": [
+        {
+          "startTime": "10:00",
+          "endTime": "10:30",
+          "available": true
+        }, {
+          "startTime": "10:30",
+          "endTime": "11:00",
+          "available": true
+        },
+        {
+          "startTime": "11:00",
+          "endTime": "11:30",
+          "available": true
+        },
+        {
+          "startTime": "11:30",
+          "endTime": "12:00",
+          "available": true
+        },
+        {
+          "startTime": "12:00",
+          "endTime": "12:30",
+          "available": true
+        },
+        {
+          "startTime": "12:30",
+          "endTime": "13:00",
+          "available": true
+        },
+        {
+          "startTime": "13:00",
+          "endTime": "13:30",
+          "available": true
+        },
+        {
+          "startTime": "13:30",
+          "endTime": "14:00",
+          "available": true
+        },
+        {
+          "startTime": "14:00",
+          "endTime": "14:30",
+          "available": true
+        },
+        {
+          "startTime": "14:30",
+          "endTime": "15:00",
+          "available": true
+        },
+        {
+          "startTime": "15:00",
+          "endTime": "15:30",
+          "available": true
+        },
+        {
+          "startTime": "15:30",
+          "endTime": "16:00",
+          "available": true
+        },
+        {
+          "startTime": "16:00",
+          "endTime": "16:30",
+          "available": true
+        },
+        {
+          "startTime": "16:30",
+          "endTime": "17:00",
+          "available": true
+        },
+        {
+          "startTime": "17:00",
+          "endTime": "17:30",
+          "available": true
+        },
+        {
+          "startTime": "17:30",
+          "endTime": "18:00",
+          "available": true
+        }
+      ]
+    },
+    {
+      "date": "20 Jan",
+      "slots": [
+        {
+          "startTime": "10:00",
+          "endTime": "10:30",
+          "available": true
+        }, {
+          "startTime": "10:30",
+          "endTime": "11:00",
+          "available": true
+        },
+        {
+          "startTime": "11:00",
+          "endTime": "11:30",
+          "available": true
+        },
+        {
+          "startTime": "11:30",
+          "endTime": "12:00",
+          "available": true
+        },
+        {
+          "startTime": "12:00",
+          "endTime": "12:30",
+          "available": true
+        },
+        {
+          "startTime": "12:30",
+          "endTime": "13:00",
+          "available": true
+        },
+        {
+          "startTime": "13:00",
+          "endTime": "13:30",
+          "available": true
+        },
+        {
+          "startTime": "13:30",
+          "endTime": "14:00",
+          "available": true
+        },
+        {
+          "startTime": "14:00",
+          "endTime": "14:30",
+          "available": true
+        },
+        {
+          "startTime": "14:30",
+          "endTime": "15:00",
+          "available": true
+        },
+        {
+          "startTime": "15:00",
+          "endTime": "15:30",
+          "available": true
+        },
+        {
+          "startTime": "15:30",
+          "endTime": "16:00",
+          "available": true
+        },
+        {
+          "startTime": "16:00",
+          "endTime": "16:30",
+          "available": true
+        },
+        {
+          "startTime": "16:30",
+          "endTime": "17:00",
+          "available": true
+        },
+        {
+          "startTime": "17:00",
+          "endTime": "17:30",
+          "available": true
+        },
+        {
+          "startTime": "17:30",
+          "endTime": "18:00",
+          "available": true
+        }
+      ]
+    },
+    {
+      "date": "21 Jan",
+      "slots": [
+        {
+          "startTime": "10:00",
+          "endTime": "10:30",
+          "available": true
+        }, {
+          "startTime": "10:30",
+          "endTime": "11:00",
+          "available": true
+        },
+        {
+          "startTime": "11:00",
+          "endTime": "11:30",
+          "available": true
+        },
+        {
+          "startTime": "11:30",
+          "endTime": "12:00",
+          "available": true
+        },
+        {
+          "startTime": "12:00",
+          "endTime": "12:30",
+          "available": true
+        },
+        {
+          "startTime": "12:30",
+          "endTime": "13:00",
+          "available": true
+        },
+        {
+          "startTime": "13:00",
+          "endTime": "13:30",
+          "available": true
+        },
+        {
+          "startTime": "13:30",
+          "endTime": "14:00",
+          "available": true
+        },
+        {
+          "startTime": "14:00",
+          "endTime": "14:30",
+          "available": true
+        },
+        {
+          "startTime": "14:30",
+          "endTime": "15:00",
+          "available": true
+        },
+        {
+          "startTime": "15:00",
+          "endTime": "15:30",
+          "available": true
+        },
+        {
+          "startTime": "15:30",
+          "endTime": "16:00",
+          "available": true
+        },
+        {
+          "startTime": "16:00",
+          "endTime": "16:30",
+          "available": true
+        },
+        {
+          "startTime": "16:30",
+          "endTime": "17:00",
+          "available": true
+        },
+        {
+          "startTime": "17:00",
+          "endTime": "17:30",
+          "available": true
+        },
+        {
+          "startTime": "17:30",
+          "endTime": "18:00",
+          "available": true
+        }
+      ]
+    },
+  ]
+
+  const [currentDateOffset, setCurrentDateOffset] = useState(0);
+
+  const setNextOffset = () => {
+    if (canGoToNextOffset())
+      setCurrentDateOffset(currentDateOffset + 7)
+  }
+
+  const setPreviousOffset = () => {
+    if (canGoToPreviousOffset())
+      setCurrentDateOffset(currentDateOffset - 7)
+  }
+
+  const canGoToPreviousOffset = () => {
+    return currentDateOffset - 7 >= 0
+  }
+
+  const canGoToNextOffset = () => {
+    return currentDateOffset + 7 < dates.length
+  }
   return (
     <>
-      <Head>
-        <title>Create Next App</title>
-        <meta name="description" content="Generated by create next app" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <main className={styles.main}>
-        <div className={styles.description}>
-          <p>
-            Get started by editing&nbsp;
-            <code className={styles.code}>pages/index.tsx</code>
-          </p>
-          <div>
-            <a
-              href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              By{' '}
-              <Image
-                src="/vercel.svg"
-                alt="Vercel Logo"
-                className={styles.vercelLogo}
-                width={100}
-                height={24}
-                priority
-              />
-            </a>
-          </div>
-        </div>
-
-        <div className={styles.center}>
-          <Image
-            className={styles.logo}
-            src="/next.svg"
-            alt="Next.js Logo"
-            width={180}
-            height={37}
-            priority
-          />
-          <div className={styles.thirteen}>
-            <Image
-              src="/thirteen.svg"
-              alt="13"
-              width={40}
-              height={31}
-              priority
-            />
-          </div>
-        </div>
-
-        <div className={styles.grid}>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Docs <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Find in-depth information about Next.js features and&nbsp;API.
-            </p>
-          </a>
-
-          <a
-            href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Learn <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Learn about Next.js in an interactive course with&nbsp;quizzes!
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Templates <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Discover and deploy boilerplate example Next.js&nbsp;projects.
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Deploy <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Instantly deploy your Next.js site to a shareable URL
-              with&nbsp;Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
+      <div>
+        {/* <button className='bg-green-200 px-4 py-2' onClick={setPreviousOffset}>Previous</button>
+        <button className='ml-2 bg-green-200 px-4 py-2' onClick={setNextOffset}>Next</button> */}
+        {/* <div className='w-full flex bg-blue-200 grid grid-cols-8'>
+          <div className='m-2'><label></label></div>
+          {
+            dates.slice(currentDateOffset, currentDateOffset + 7).map(eachDate => {
+              return <div className='m-2'><label>{eachDate.date}</label></div>
+            })
+          }
+          {
+            dates.slice(0, 7).map((eachDate, dateIndex) => {
+              return eachDate.slots.map((eachSlot, timeIndex) => {
+                return <>
+                  <div className='m-2 py-2'><label>{eachSlot.startTime}-{eachSlot.endTime}</label></div>
+                  <div className='m-2'><Button id={`${timeIndex} + '-', ${timeIndex}`} className='bg-green-300 text-black'>Available</Button></div>
+                  <div className='m-2'><Button id={`${timeIndex} + '-', ${timeIndex}`} className='bg-green-300 text-black'>Available</Button></div>
+                  <div className='m-2'><Button id={`${timeIndex} + '-', ${timeIndex}`} className='bg-green-300 text-black'>Available</Button></div>
+                  <div className='m-2'><Button id={`${timeIndex} + '-', ${timeIndex}`} className='bg-green-300 text-black'>Available</Button></div>
+                  <div className='m-2'><Button id={`${timeIndex} + '-', ${timeIndex}`} className='bg-green-300 text-black'>Available</Button></div>
+                  <div className='m-2'><Button id={`${timeIndex} + '-', ${timeIndex}`} className='bg-green-300 text-black'>Available</Button></div>
+                  <div className='m-2'><Button id={`${timeIndex} + '-', ${timeIndex}`} className='bg-green-300 text-black'>Available</Button></div>
+                </>
+              })
+            })
+          }
+        </div> */}
+      </div>
     </>
   )
 }
