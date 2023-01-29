@@ -8,7 +8,7 @@ class NetworkService {
         try {
             AWS.config.region = awsRegion;
             const user = await Auth.currentAuthenticatedUser();
-            const login = { 'arn:aws:cognito-identity:us-east-2:124017527459:identitypool/us-east-2:b65b6456-be80-4c00-9e8f-c46bb0c44188': user.signInUserSession.idToken.jwtToken }
+            const login = { 'cognito-idp.us-east-2.amazonaws.com/us-east-2_RLYP0TBYB': user.signInUserSession.idToken.jwtToken }
             console.log(login)
             //login[identityPoolARN ] = user.signInUserSession.idToken.jwtToken
             AWS.config.credentials = new AWS.CognitoIdentityCredentials({
