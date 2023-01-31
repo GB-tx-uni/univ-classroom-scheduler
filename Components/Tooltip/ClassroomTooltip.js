@@ -24,7 +24,7 @@ const Example = ({ classData }) => {
         <>
             <Popover>
                 <PopoverHandler>
-                    <Button color={"teal"} variant="gradient">{classData?.name}</Button>
+                    <Button className="bg-blueGray-600" color={"black"} variant="gradient">{classData?.name}</Button>
                 </PopoverHandler>
                 <PopoverContent>
                     <div>
