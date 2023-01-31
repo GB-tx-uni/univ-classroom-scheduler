@@ -1,0 +1,797 @@
+1.Lambda: To get classrooms
+Request:{
+        "case":"block"
+        }
+Response:{
+    successCode:200,
+    message:"Test",
+    responseData:[
+        {
+            block:"Block-A",
+            classrooms:[
+                {
+                    "class":"Class A-101",
+                    "currentLesson":"5004 GTA Workshop",
+                },
+                {
+                    "class":"Class A-102",
+                    "currentLesson":"5004 GTA Workshop",
+                },
+                {
+                    "class":"Class A-103",
+                    "currentLesson":"5004 GTA Workshop",
+                }
+            ]
+        },
+        {
+            block:"Block-B",
+            classrooms:[
+                {
+                    "class":"Class B-101",
+                    "currentLesson":"5004 GTA Workshop",
+                },
+                {
+                    "class":"Class B-102",
+                    "currentLesson":"5004 GTA Workshop",
+                },
+                {
+                    "class":"Class B-103",
+                    "currentLesson":"5004 GTA Workshop",
+                }
+            ]
+        },
+
+    ]
+}
+
+1.Lambda: To get classrooms
+Request:{
+        "case":"all-classrooms"
+        }
+Response:[
+        {
+                {
+                    "class":"Class A-101",
+                    "block":"Block-A",
+                    "currentLesson":"5004 GTA Workshop",
+                },
+                {
+                    "class":"Class A-102",
+                    "block":"Block-A",
+                    "currentLesson":"5004 GTA Workshop",
+                },
+                {
+                    "class":"Class A-103",
+                    "block":"Block-A",
+                    "currentLesson":"5004 GTA Workshop",
+                },
+                {
+                    "class":"Class B-101",
+                    "block":"Block-B",
+                    "currentLesson":"5004 GTA Workshop",
+                },
+                {
+                    "class":"Class B-102",
+                    "block":"Block-B",
+                    "currentLesson":"5004 GTA Workshop",
+                },
+                {
+                    "class":"Class B-103",
+                    "block":"Block-B",
+                    "currentLesson":"5004 GTA Workshop",
+                }
+            
+        }
+
+    ]
+
+
+2.Lambda: To get classroom schedule
+Request:{
+    classroomId:"Class A-101"
+}
+Response:[
+    {
+    startTime:"",
+    endTime:"",
+    title:"5004 GTA Workshop",
+    location:"Robeson Hall-North Wing",
+    professorName:"Carol C. Reyna",
+    profDepartment:"Biomedical Engineering and Mechanics",
+    noOfStudents:40
+},
+{
+    startTime:"",
+    endTime:"",
+    title:"5004 GTA Workshop",
+    location:"Robeson Hall-North Wing",
+    professorName:"Carol C. Reyna",
+    profDepartment:"Biomedical Engineering and Mechanics",
+    noOfStudents:40
+}
+]
+
+3.Lambda: To get Professor's schedule
+Request:{
+    professorId:"PROF64532642783"
+}
+Response:[
+    {
+    startTime:"",
+    endTime:"",
+    title:"5004 GTA Workshop",
+    classroom:""Class A-101,
+    location:"Robeson Hall-North Wing",
+    noOfStudents:40
+},
+{
+    startTime:"",
+    endTime:"",
+    title:"5004 GTA Workshop",
+    location:"Robeson Hall-North Wing",
+    classroom:""Class A-101,
+    noOfStudents:40
+}
+]
+4.Lambda: To allocate course
+Request:{
+    professorId:"PROF74653876"
+    professorName:"Carol C. Reyna",
+    department:"Biomedical Engineering and Mechanics",
+    courseIdentifier:"Cou537645",
+    courseName:"5004 GTA Workshop",
+    minNoOfStudent:10,
+    maxNoOfStudent:40,
+    totalContactHours:"",
+    gradingCriteria:"",
+    minimumTimeGapBetweenTwoConsecutiveClasses:"45min",
+    terms:"Fall",
+    startDate:"",
+    endDate:"",
+    availability:[
+        {
+            day: "Monday",
+            slots: [
+                {
+                    "startTime": "10:00",
+                    "endTime": "10:30",
+                    "available": false
+                }, {
+                    "startTime": "10:30",
+                    "endTime": "11:00",
+                    "available": false
+                },
+                {
+                    "startTime": "11:00",
+                    "endTime": "11:30",
+                    "available": false
+                },
+                {
+                    "startTime": "11:30",
+                    "endTime": "12:00",
+                    "available": false
+                },
+                {
+                    "startTime": "12:00",
+                    "endTime": "12:30",
+                    "available": false
+                },
+                {
+                    "startTime": "12:30",
+                    "endTime": "13:00",
+                    "available": false
+                },
+                {
+                    "startTime": "13:00",
+                    "endTime": "13:30",
+                    "available": false
+                },
+                {
+                    "startTime": "13:30",
+                    "endTime": "14:00",
+                    "available": false
+                },
+                {
+                    "startTime": "14:00",
+                    "endTime": "14:30",
+                    "available": false
+                },
+                {
+                    "startTime": "14:30",
+                    "endTime": "15:00",
+                    "available": false
+                },
+                {
+                    "startTime": "15:00",
+                    "endTime": "15:30",
+                    "available": false
+                },
+                {
+                    "startTime": "15:30",
+                    "endTime": "16:00",
+                    "available": false
+                },
+                {
+                    "startTime": "16:00",
+                    "endTime": "16:30",
+                    "available": false
+                },
+                {
+                    "startTime": "16:30",
+                    "endTime": "17:00",
+                    "available": false
+                },
+                {
+                    "startTime": "17:00",
+                    "endTime": "17:30",
+                    "available": false
+                },
+                {
+                    "startTime": "17:30",
+                    "endTime": "18:00",
+                    "available": false
+                }
+            ]
+        },
+        {
+            day: "Tuesday",
+            slots: [
+                {
+                    "startTime": "10:00",
+                    "endTime": "10:30",
+                    "available": false
+                }, {
+                    "startTime": "10:30",
+                    "endTime": "11:00",
+                    "available": false
+                },
+                {
+                    "startTime": "11:00",
+                    "endTime": "11:30",
+                    "available": false
+                },
+                {
+                    "startTime": "11:30",
+                    "endTime": "12:00",
+                    "available": false
+                },
+                {
+                    "startTime": "12:00",
+                    "endTime": "12:30",
+                    "available": false
+                },
+                {
+                    "startTime": "12:30",
+                    "endTime": "13:00",
+                    "available": false
+                },
+                {
+                    "startTime": "13:00",
+                    "endTime": "13:30",
+                    "available": false
+                },
+                {
+                    "startTime": "13:30",
+                    "endTime": "14:00",
+                    "available": false
+                },
+                {
+                    "startTime": "14:00",
+                    "endTime": "14:30",
+                    "available": false
+                },
+                {
+                    "startTime": "14:30",
+                    "endTime": "15:00",
+                    "available": false
+                },
+                {
+                    "startTime": "15:00",
+                    "endTime": "15:30",
+                    "available": false
+                },
+                {
+                    "startTime": "15:30",
+                    "endTime": "16:00",
+                    "available": false
+                },
+                {
+                    "startTime": "16:00",
+                    "endTime": "16:30",
+                    "available": false
+                },
+                {
+                    "startTime": "16:30",
+                    "endTime": "17:00",
+                    "available": false
+                },
+                {
+                    "startTime": "17:00",
+                    "endTime": "17:30",
+                    "available": false
+                },
+                {
+                    "startTime": "17:30",
+                    "endTime": "18:00",
+                    "available": false
+                }
+            ]
+        },
+        {
+            day: "Wednesday",
+            slots: [
+                {
+                    "startTime": "10:00",
+                    "endTime": "10:30",
+                    "available": false
+                }, {
+                    "startTime": "10:30",
+                    "endTime": "11:00",
+                    "available": false
+                },
+                {
+                    "startTime": "11:00",
+                    "endTime": "11:30",
+                    "available": false
+                },
+                {
+                    "startTime": "11:30",
+                    "endTime": "12:00",
+                    "available": false
+                },
+                {
+                    "startTime": "12:00",
+                    "endTime": "12:30",
+                    "available": false
+                },
+                {
+                    "startTime": "12:30",
+                    "endTime": "13:00",
+                    "available": false
+                },
+                {
+                    "startTime": "13:00",
+                    "endTime": "13:30",
+                    "available": false
+                },
+                {
+                    "startTime": "13:30",
+                    "endTime": "14:00",
+                    "available": false
+                },
+                {
+                    "startTime": "14:00",
+                    "endTime": "14:30",
+                    "available": false
+                },
+                {
+                    "startTime": "14:30",
+                    "endTime": "15:00",
+                    "available": false
+                },
+                {
+                    "startTime": "15:00",
+                    "endTime": "15:30",
+                    "available": false
+                },
+                {
+                    "startTime": "15:30",
+                    "endTime": "16:00",
+                    "available": false
+                },
+                {
+                    "startTime": "16:00",
+                    "endTime": "16:30",
+                    "available": false
+                },
+                {
+                    "startTime": "16:30",
+                    "endTime": "17:00",
+                    "available": false
+                },
+                {
+                    "startTime": "17:00",
+                    "endTime": "17:30",
+                    "available": false
+                },
+                {
+                    "startTime": "17:30",
+                    "endTime": "18:00",
+                    "available": false
+                }
+            ]
+        },
+        {
+            day: "Thursday",
+            slots: [
+                {
+                    "startTime": "10:00",
+                    "endTime": "10:30",
+                    "available": false
+                }, {
+                    "startTime": "10:30",
+                    "endTime": "11:00",
+                    "available": false
+                },
+                {
+                    "startTime": "11:00",
+                    "endTime": "11:30",
+                    "available": false
+                },
+                {
+                    "startTime": "11:30",
+                    "endTime": "12:00",
+                    "available": false
+                },
+                {
+                    "startTime": "12:00",
+                    "endTime": "12:30",
+                    "available": false
+                },
+                {
+                    "startTime": "12:30",
+                    "endTime": "13:00",
+                    "available": false
+                },
+                {
+                    "startTime": "13:00",
+                    "endTime": "13:30",
+                    "available": false
+                },
+                {
+                    "startTime": "13:30",
+                    "endTime": "14:00",
+                    "available": false
+                },
+                {
+                    "startTime": "14:00",
+                    "endTime": "14:30",
+                    "available": false
+                },
+                {
+                    "startTime": "14:30",
+                    "endTime": "15:00",
+                    "available": false
+                },
+                {
+                    "startTime": "15:00",
+                    "endTime": "15:30",
+                    "available": false
+                },
+                {
+                    "startTime": "15:30",
+                    "endTime": "16:00",
+                    "available": false
+                },
+                {
+                    "startTime": "16:00",
+                    "endTime": "16:30",
+                    "available": false
+                },
+                {
+                    "startTime": "16:30",
+                    "endTime": "17:00",
+                    "available": false
+                },
+                {
+                    "startTime": "17:00",
+                    "endTime": "17:30",
+                    "available": false
+                },
+                {
+                    "startTime": "17:30",
+                    "endTime": "18:00",
+                    "available": false
+                }
+            ]
+        },
+        {
+            day: "Friday",
+            slots: [
+                {
+                    "startTime": "10:00",
+                    "endTime": "10:30",
+                    "available": false
+                }, {
+                    "startTime": "10:30",
+                    "endTime": "11:00",
+                    "available": false
+                },
+                {
+                    "startTime": "11:00",
+                    "endTime": "11:30",
+                    "available": false
+                },
+                {
+                    "startTime": "11:30",
+                    "endTime": "12:00",
+                    "available": false
+                },
+                {
+                    "startTime": "12:00",
+                    "endTime": "12:30",
+                    "available": false
+                },
+                {
+                    "startTime": "12:30",
+                    "endTime": "13:00",
+                    "available": false
+                },
+                {
+                    "startTime": "13:00",
+                    "endTime": "13:30",
+                    "available": false
+                },
+                {
+                    "startTime": "13:30",
+                    "endTime": "14:00",
+                    "available": false
+                },
+                {
+                    "startTime": "14:00",
+                    "endTime": "14:30",
+                    "available": false
+                },
+                {
+                    "startTime": "14:30",
+                    "endTime": "15:00",
+                    "available": false
+                },
+                {
+                    "startTime": "15:00",
+                    "endTime": "15:30",
+                    "available": false
+                },
+                {
+                    "startTime": "15:30",
+                    "endTime": "16:00",
+                    "available": false
+                },
+                {
+                    "startTime": "16:00",
+                    "endTime": "16:30",
+                    "available": false
+                },
+                {
+                    "startTime": "16:30",
+                    "endTime": "17:00",
+                    "available": false
+                },
+                {
+                    "startTime": "17:00",
+                    "endTime": "17:30",
+                    "available": false
+                },
+                {
+                    "startTime": "17:30",
+                    "endTime": "18:00",
+                    "available": false
+                }
+            ]
+        },
+        {
+            day: "Saturday",
+            slots: [
+                {
+                    "startTime": "10:00",
+                    "endTime": "10:30",
+                    "available": false
+                }, {
+                    "startTime": "10:30",
+                    "endTime": "11:00",
+                    "available": false
+                },
+                {
+                    "startTime": "11:00",
+                    "endTime": "11:30",
+                    "available": false
+                },
+                {
+                    "startTime": "11:30",
+                    "endTime": "12:00",
+                    "available": false
+                },
+                {
+                    "startTime": "12:00",
+                    "endTime": "12:30",
+                    "available": false
+                },
+                {
+                    "startTime": "12:30",
+                    "endTime": "13:00",
+                    "available": false
+                },
+                {
+                    "startTime": "13:00",
+                    "endTime": "13:30",
+                    "available": false
+                },
+                {
+                    "startTime": "13:30",
+                    "endTime": "14:00",
+                    "available": false
+                },
+                {
+                    "startTime": "14:00",
+                    "endTime": "14:30",
+                    "available": false
+                },
+                {
+                    "startTime": "14:30",
+                    "endTime": "15:00",
+                    "available": false
+                },
+                {
+                    "startTime": "15:00",
+                    "endTime": "15:30",
+                    "available": false
+                },
+                {
+                    "startTime": "15:30",
+                    "endTime": "16:00",
+                    "available": false
+                },
+                {
+                    "startTime": "16:00",
+                    "endTime": "16:30",
+                    "available": false
+                },
+                {
+                    "startTime": "16:30",
+                    "endTime": "17:00",
+                    "available": false
+                },
+                {
+                    "startTime": "17:00",
+                    "endTime": "17:30",
+                    "available": false
+                },
+                {
+                    "startTime": "17:30",
+                    "endTime": "18:00",
+                    "available": false
+                }
+            ]
+        },
+        {
+            day: "Sunday",
+            slots: [
+                {
+                    "startTime": "10:00",
+                    "endTime": "10:30",
+                    "available": false
+                }, {
+                    "startTime": "10:30",
+                    "endTime": "11:00",
+                    "available": false
+                },
+                {
+                    "startTime": "11:00",
+                    "endTime": "11:30",
+                    "available": false
+                },
+                {
+                    "startTime": "11:30",
+                    "endTime": "12:00",
+                    "available": false
+                },
+                {
+                    "startTime": "12:00",
+                    "endTime": "12:30",
+                    "available": false
+                },
+                {
+                    "startTime": "12:30",
+                    "endTime": "13:00",
+                    "available": false
+                },
+                {
+                    "startTime": "13:00",
+                    "endTime": "13:30",
+                    "available": false
+                },
+                {
+                    "startTime": "13:30",
+                    "endTime": "14:00",
+                    "available": false
+                },
+                {
+                    "startTime": "14:00",
+                    "endTime": "14:30",
+                    "available": false
+                },
+                {
+                    "startTime": "14:30",
+                    "endTime": "15:00",
+                    "available": false
+                },
+                {
+                    "startTime": "15:00",
+                    "endTime": "15:30",
+                    "available": false
+                },
+                {
+                    "startTime": "15:30",
+                    "endTime": "16:00",
+                    "available": false
+                },
+                {
+                    "startTime": "16:00",
+                    "endTime": "16:30",
+                    "available": false
+                },
+                {
+                    "startTime": "16:30",
+                    "endTime": "17:00",
+                    "available": false
+                },
+                {
+                    "startTime": "17:00",
+                    "endTime": "17:30",
+                    "available": false
+                },
+                {
+                    "startTime": "17:30",
+                    "endTime": "18:00",
+                    "available": false
+                }
+            ]
+        }
+
+    ]
+}
+Response:{
+    success:True,
+}
+
+5. Lambda: To get professors list
+Request:null
+Response:[
+    {
+        professorId:"PROF4384534827",
+        professorName:"Carol C. Reyna",
+        department:"Biomedical Engineering and Mechanics"
+    },
+    {
+        professorId:"PROF4384534827",
+        professorName:"Carol C. Reyna",
+        department:"Biomedical Engineering and Mechanics"
+    },
+    {
+        professorId:"PROF4384534827",
+        professorName:"Carol C. Reyna",
+        department:"Biomedical Engineering and Mechanics"
+    },
+    {
+        professorId:"PROF4384534827",
+        professorName:"Carol C. Reyna",
+        department:"Biomedical Engineering and Mechanics"
+    },
+    {
+        professorId:"PROF4384534827",
+        professorName:"Carol C. Reyna",
+        department:"Biomedical Engineering and Mechanics"
+    },
+    {
+        professorId:"PROF4384534827",
+        professorName:"Carol C. Reyna",
+        department:"Biomedical Engineering and Mechanics"
+    },
+    {
+        professorId:"PROF4384534827",
+        professorName:"Carol C. Reyna",
+        department:"Biomedical Engineering and Mechanics"
+    },
+    {
+        professorId:"PROF4384534827",
+        professorName:"Carol C. Reyna",
+        department:"Biomedical Engineering and Mechanics"
+    },
+    {
+        professorId:"PROF4384534827",
+        professorName:"Carol C. Reyna",
+        department:"Biomedical Engineering and Mechanics"
+    },
+]
+
+
