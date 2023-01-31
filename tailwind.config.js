@@ -11,8 +11,7 @@ module.exports = withMT({
   ],
   purge: ["./src/**/*.html", "./src/**/*.js", "./src/**/*.ts", "./src/**/*.jsx", "./src/**/*.tsx", "./public/**/*.html", './pages/**/*.{js,ts,jsx,tsx}',
     './Components/**/*.{js,ts,jsx,tsx}',
-    './layout/**/*.{js,ts,jsx,tsx}',
-    './helpers/**/*.{js,ts,jsx,tsx}'],
+    './layout/**/*.{js,ts,jsx,tsx}'],
   theme: {
     colors: {
       blueGray: {

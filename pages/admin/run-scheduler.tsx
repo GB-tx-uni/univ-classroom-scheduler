@@ -8,6 +8,7 @@ import ListItemText from '@mui/material/ListItemText';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import Checkbox from '@mui/material/Checkbox';
 import MultipleSelectCheckmarks from "../../Components/Dropdowns/MultipleSelectionDropdown";
+import Alert from '../../Components/Alert'
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -23,7 +24,7 @@ const MenuProps = {
 export default function ClassroomSchedule() {
     const [selectedProf, setSelectedProf] = React.useState<number[]>([]);
 
-    const [runSchedulerDialog, setRunSchedulerDialog] = useState(true)
+    const [runSchedulerDialog, setRunSchedulerDialog] = useState(false)
 
     const handleChange = (event: SelectChangeEvent<typeof selectedProf>) => {
         const {
@@ -308,7 +309,12 @@ export default function ClassroomSchedule() {
                                             className="text-blueGray-600 active:bg-emerald-600 font-bold text-sm px-6 py-3 underline hover:shadow-lg outline-none focus:outline-none mb-1 ease-linear transition-all duration-150"
                                             type="button"
                                             onClick={() => {
-                                                setRunSchedulerDialog(true)
+                                                Alert({
+                                                    title: "",
+                                                    type: "info",
+                                                    message: "Are you sure you want to run the scheduler for all the courses?",
+                                                    confirmButtonText: "Run"
+                                                })
                                             }}
 
                                         >
@@ -365,7 +371,12 @@ export default function ClassroomSchedule() {
                         className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                         type="button"
                         onClick={() => {
-                            setRunSchedulerDialog(true)
+                            Alert({
+                                title: "",
+                                type: "info",
+                                message: "Are you sure you want to run the scheduler?",
+                                confirmButtonText: "Run"
+                            })
                         }}
 
                     >
